@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejaswini CN - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0f0f0f;
+            --secondary-bg: #171717;
+            --accent-color: #00a3ff;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --card-bg: #1c1c1c;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+            --business-accent: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+        }
+        
+        body.dark-theme {
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+        }
+
+        body:not(.dark-theme) {
+            --primary-bg: #ffffff;
+            --secondary-bg: #f5f5f5;
+            --text-primary: #333333;
+            --text-secondary: #2d2c2c;
+            --card-bg: #ffffff;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body:not(.dark-theme) .hero h1 {
+            background: linear-gradient(90deg, #333333 0%, var(--accent-color) 50%, #333333 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 2rem 0;
+            background-color: var(--secondary-bg);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 0;
+            min-height: 80vh;
+            background: linear-gradient(180deg, var(--primary-bg) 0%, rgba(23, 23, 23, 0.8) 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(90deg, #ffffff 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            padding: 0 20px;
+        }
+        
+        .cta-button {
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background-color: #0085d1;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 163, 255, 0.2);
+        }
+        
+        .projects {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        /* Business Development Projects Section */
+        .business-projects {
+            padding: 5rem 0;
+            background-color: var(--secondary-bg);
+            position: relative;
+        }
+
+        .business-projects .section-title h2 {
+            color: var(--business-accent);
+        }
+
+        .business-projects .section-title h2::after {
+            background-color: var(--business-accent);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 0.5rem auto 0;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .projects-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 2rem;
+            padding-bottom: 1rem;
+            scrollbar-width: none;
+        }
+        
+        .projects-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Business Projects Grid - Different Layout */
+        .business-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            flex: 0 0 320px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        /* Business Project Cards */
+        .business-project-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border-left: 4px solid var(--business-accent);
+        }
+
+        .business-project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .business-project-info {
+            padding: 2rem;
+        }
+        
+        .project-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .business-project-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+        
+        .project-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .business-project-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-meta {
+            color: var(--business-accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .business-impact {
+            background-color: rgba(40, 167, 69, 0.1);
+            border-left: 4px solid var(--business-accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .business-impact h4 {
+            color: var(--business-accent);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .business-impact ul {
+            margin: 0;
+            padding-left: 1rem;
+        }
+
+        .business-impact li {
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .metrics {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .metric {
+            background-color: var(--business-accent);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tag {
+            background-color: rgba(0, 163, 255, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-bg);
+            color: var(--text-secondary);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: 1px solid #333;
+        }
+        
+        .project-link:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border-color: var(--accent-color);
+        }
+        
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--card-bg);
+            color: var(--text-secondary);
+            border: 1px solid #333;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .scroll-arrow:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border-color: var(--accent-color);
+        }
+        
+        .scroll-left {
+            left: 0;
+        }
+        
+        .scroll-right {
+            right: 0;
+        }
+        
+        .about {
+            padding: 5rem 0;
+            background-color: var(--secondary-bg);
+        }
+        
+        .about-container {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .education, .experience, .certifications {
+            padding: 5rem 0;
+        }
+        
+        .education-item, .experience-item {
+            margin-bottom: 2rem;
+        }
+        
+        .education-item h4, .experience-item h4 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        
+        .education-item p, .experience-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .education-item ul, .experience-item ul {
+            margin-top: 0.5rem;
+            padding-left: 20px;
+        }
+        
+        .education-item ul li, .experience-item ul li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .skills {
+            margin-top: 2rem;
+        }
+        
+        .skills h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill-item {
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: 1px solid #333;
+        }
+        
+        .skill-item:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .certification-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .certification-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .certification-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .certification-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-bg);
+            color: var(--text-secondary);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: 1px solid #333;
+        }
+        
+        .certification-link:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border-color: var(--accent-color);
+        }
+        
+        .contact {
+            padding: 5rem 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-form {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: var(--secondary-bg);
+            border: 1px solid #333;
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 163, 255, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .submit-btn:hover {
+            background-color: #0085d1;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 163, 255, 0.2);
+        }
+        
+        .contact-info {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 163, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .contact-text h4 {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.2rem;
+        }
+        
+        .contact-text p, .contact-text a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            text-decoration: none;
+            border: 1px solid #333;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+        }
+        
+        footer {
+            background-color: var(--secondary-bg);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .back-to-top {
+            display: inline-block;
+            margin-top: 1rem;
+            width: 40px;
+            height: 40px;
+            background-color: var(--card-bg);
+            color: var(--text-secondary);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .terminal-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--accent-color);
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            max-width: 100%;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--accent-color); }
+        }
+        
+        .theme-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--card-bg);
+            transition: var(--transition);
+            border-radius: 30px;
+            border: 1px solid #333;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 3px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(30px);
+            background-color: var(--primary-bg);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .about-container { flex-direction: column; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .about-content h2 { font-size: 2rem; }
+            .project-card { flex: 0 0 280px; }
+            .business-projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Tejaswini<span>.</span></a>
+                <div class="nav-links">
+                    <a href="#business-projects">Business Projects</a>
+                    <a href="#projects">Technical Projects</a>
+                    <a href="#about">About</a>
+                    <a href="#education">Education</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#certifications">Certifications</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <label class="theme-switch">
+                    <input type="checkbox" checked id="theme-toggle-checkbox">
+                    <span class="slider"></span>
+                </label>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="terminal-text">Hello, I'm Tejaswini</h1>
+            <p>I'm a Business Development and Data Analytics professional with 2+ years of experience, focused on turning complex data into clear, actionable insights and compelling business cases. My work combines machine learning, analytics, and cloud tools to solve real-world problems whether it's detecting anomalies, predicting outcomes, building data products that support smarter decisions, or translating technical capabilities into business value that drives customer success and multi-million dollar investments.</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Data Science & Business Development Projects</h2>
+            </div>
+            <p class="section-subtitle">Advanced analytics and automation solutions with proven business impact</p>
+            <div class="projects-grid" id="projectsGrid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/reddit.png" alt="Automated Vendor Intelligence for Manufacturing Procurement">
+                    </div>
+                    <div class="project-info">
+                        <h3>Automated Vendor Intelligence for Manufacturing Procurement</h3>
+                        <p>Developed an automated supplier intelligence pipeline using Apache Airflow, AWS Glue, Redshift, and Python to extract and analyze vendor-related discussions for manufacturing procurement decisions. The pipeline performs real-time sentiment analysis and risk assessment, storing results in Redshift for executive reporting. Built comprehensive dashboards in Tableau to help compliance and procurement teams monitor supplier reputation and market sentiment in real time, reducing manual vendor review by 80% and enabling faster, data-driven sourcing decisions. This project demonstrates ability to integrate cloud services, orchestrate complex business workflows, and turn unstructured market data into actionable procurement insights that support multi-million dollar supplier relationships.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Airflow</span>
+                            <span class="project-tag">AWS Glue</span>
+                            <span class="project-tag">AWS S3</span>
+                            <span class="project-tag">Redshift</span>
+                            <span class="project-tag">Athena</span>
+                            <span class="project-tag">Tableau</span>
+                            <span class="project-tag">Reddit API</span>
+                            <span class="project-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/cntejaswini/Diabetes-Prediction-Model" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/roi.png" alt="Operational Efficiency Analytics for Resource Planning">
+                    </div>
+                    <div class="project-info">
+                        <h3>Automation ROI Analysis Framework</h3>
+                        <p>Built a comprehensive ROI analysis framework enabling sales teams to deliver consistent, data-driven business cases for automation projects. Developed interactive calculator with real-time NPV, IRR, and payback period calculations, replacing manual Excel processes with professional web-based tool. Conducted extensive industry research analyzing 25+ implementations from major vendors (Siemens, ABB, Rockwell Automation) to establish validated benchmarks and conservative assumptions. Created three detailed case studies spanning manufacturing, warehouse, and packaging industries, demonstrating 20-60% first-year ROI with 12-36 month payback periods across $815K-$1.7M investment scenarios and reducing customer decision timelines through clear financial justification and risk assessment methodologies.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Financial Modeling</span>
+                            <span class="project-tag">Business Analysis</span>
+                            <span class="project-tag">Industry Research</span>
+                            <span class="project-tag">Interactive Calculator</span>
+                            <span class="project-tag">NPV/IRR Analysiss</span>
+                            <span class="project-tag">Cost-Benefit Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/cntejaswini/automation-roi-framework" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/hlos.jpg" alt="Operational Efficiency Analytics for Resource Planning">
+                    </div>
+                    <div class="project-info">
+                        <h3>Operational Efficiency Analytics for Resource Planning</h3>
+                        <p>Built predictive models for operational resource optimization during high-demand periods, focusing on capacity planning and efficiency improvement. Developed MLP and RNN models to forecast resource requirements and operational flow, enabling administrators to make data-driven decisions about resource allocation, staffing optimization, and equipment deployment. Created executive summary reports translating model predictions into operational recommendations and cost-saving opportunities for leadership teams, resulting in 25% improvement in resource utilization planning.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">KNN</span>
+                            <span class="project-tag">Deep Learning</span>
+                            <span class="project-tag">Multi layer Perceptron</span>
+                            <span class="project-tag">Recurrent Neural Networks</span>
+                            <span class="project-tag">Resource Planning</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/cntejaswini/healthcare-analytics" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/phishing.jpg" alt="Automated Quality Control & Risk Assessment System">
+                    </div>
+                    <div class="project-info">
+                        <h3>Automated Quality Control & Risk Assessment System</h3>
+                        <p>Developed comprehensive quality and risk assessment system using multiple machine learning algorithms including Random Forest, SVM, and Logistic Regression to classify and detect anomalies in operational processes. Built robust classification framework applicable to quality control, defect detection, and security applications in manufacturing environments. System demonstrates automated decision-making capabilities that reduce manual inspection processes while maintaining high accuracy standards, directly applicable to aerospace and manufacturing quality assurance operations.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">R Programming</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Linear Regression</span>
+                            <span class="project-tag">KNN</span>
+                            <span class="project-tag">SVM</span>
+                            <span class="project-tag">Random Forest</span>
+                            <span class="project-tag">Decision Tree</span>
+                            <span class="project-tag">Quality Control</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/cntejaswini/Detection-of-Phishing-websites" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/football.jpg" alt="Customer Operations & Project Management System">
+                    </div>
+                    <div class="project-info">
+                        <h3>Customer Operations & Project Management System</h3>
+                        <p>Designed and implemented comprehensive database management system for tracking customer operations, project deployment, and performance metrics. Built MySQL database with Python interface for managing complex customer relationships, project tracking, and performance analytics. System supports business development operations including customer engagement planning, project monitoring, and success metrics tracking for customer relationship management across multiple industrial clients.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">SQL</span>
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">Database Design Schema</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">Customer Management</span>
+                            <span class="project-tag">Project Tracking</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/cntejaswini/Football-Database-Management-System" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/BA.png" alt="Executive Business Intelligence & KPI Tracking">
+                    </div>
+                    <div class="project-info">
+                        <h3>Executive Business Intelligence & KPI Tracking</h3>
+                        <p>Created comprehensive business intelligence dashboards using Tableau for aerospace, manufacturing, and technology sectors. Developed executive-level KPI tracking systems that provide real-time insights for strategic decision-making, operational efficiency monitoring, and customer performance analysis. Dashboards designed specifically for C-level communication with clear value propositions, actionable insights, and customer success metrics that support business development and customer relationship management initiatives.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Tableau</span>
+                            <span class="project-tag">Business Intelligence</span>
+                            <span class="project-tag">KPI Tracking</span>
+                            <span class="project-tag">Executive Reporting</span>
+                            <span class="project-tag">Customer Analytics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://public.tableau.com/app/profile/tejaswini.chowdam.nallagondappa.gari/viz/TableauProject1_17347515030790/Dashboard1" class="project-link">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/landmines.jpg" alt="Safety & Risk Management Analytics">
+                    </div>
+                    <div class="project-info">
+                        <h3>Safety & Risk Management Analytics</h3>
+                        <p>Applied machine learning techniques for safety and risk classification using environmental and sensor data, achieving 61.62% accuracy with optimized SVM models. Developed systematic approach to risk assessment and safety management that can be applied to manufacturing safety protocols, equipment monitoring, and operational risk management in aerospace and industrial environments. Demonstrates capability to build classification systems for critical safety applications.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">R Programming</span>
+                            <span class="project-tag">EDA</span>
+                            <span class="project-tag">Logistic Regression</span>
+                            <span class="project-tag">Decision Tree</span>
+                            <span class="project-tag">Random Forest</span>
+                            <span class="project-tag">SVM</span>
+                            <span class="project-tag">Safety Analytics</span>
+                            <span class="project-tag">Risk Management</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/cntejaswini/Land-Mines-Detection" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/diabetes.jpg" alt="Predictive Analytics for Operational Health Monitoring">
+                    </div>
+                    <div class="project-info">
+                        <h3>Predictive Analytics for Operational Health Monitoring</h3>
+                        <p>Developed predictive system using Streamlit for health parameter analysis and risk assessment. Built scalable analytics framework using machine learning models including Gradient Boosting and Random Forest for parameter evaluation and prediction. System demonstrates ability to create user-friendly interfaces for complex analytical tools, applicable to equipment health monitoring, operational parameter tracking, and predictive maintenance in manufacturing environments.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Streamlit</span>
+                            <span class="project-tag">Predictive Analytics</span>
+                            <span class="project-tag">Gradient Boosting</span>
+                            <span class="project-tag">Random Forest</span>
+                            <span class="project-tag">Equipment Monitoring</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/cntejaswini/Diabetes-Prediction-Model" class="project-link">View Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/CA.png" alt="Customer Analysis Dashboard">
+                    </div>
+                    <div class="project-info">
+                        <h3>Customer Analysis Dashboard</h3>
+                        <p>Developed interactive customer analytics dashboard using Tableau for sales performance tracking and customer relationship management. Created comprehensive visualization system for monitoring customer engagement, sales metrics, and revenue optimization opportunities to support business development and account management initiatives.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Tableau</span>
+                            <span class="project-tag">Customer Analytics</span>
+                            <span class="project-tag">Sales Performance</span>
+                            <span class="project-tag">Revenue Tracking</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://public.tableau.com/app/profile/tejaswini.cn/viz/Book1_17479759729160/Dashboard1" class="project-link">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/ND.png" alt="Netflix Dashboard">
+                    </div>
+                    <div class="project-info">
+                        <h3>Content Analytics Dashboard</h3>
+                        <p>Developed interactive content analytics dashboard using Tableau for entertainment industry data analysis. Created comprehensive visualization system for content performance tracking, audience engagement metrics, and strategic content planning insights applicable to market analysis and customer preference understanding.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Tableau</span>
+                            <span class="project-tag">Content Analytics</span>
+                            <span class="project-tag">Market Analysis</span>
+                            <span class="project-tag">Performance Metrics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://public.tableau.com/app/profile/tejaswini.cn/viz/Book1_17443251179170_17443317885080/NetflixDashboard" class="project-link">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-arrow scroll-left" onclick="scrollProjects('left')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6"></path>
+                </svg>
+            </div>
+            <div class="scroll-arrow scroll-right" onclick="scrollProjects('right')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18l6-6-6-6"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="images/TEJU.jpeg" alt="Tejaswini">
+                </div>
+                <div class="about-content">
+                    <p>Currently exploring the world of data science as I pursue my Master's in Data Science at the University at Buffalo (UB), while building on 2+ years of business development and data engineering experience. With a background in mechanical engineering and business analytics, I've always been captivated by the intersection of technology and real-world problem-solving. My journey is fueled by a passion for using data to create meaningful change and translating complex technical capabilities into compelling business value, whether it's driving equitable resource use, tackling societal challenges as an ELISS Fellow, or delivering solutions that exceed customer expectations.</p>
+                    <p>Beyond crunching numbers and building models, I'm a lifelong learner with a love for discovery, always on the lookout for new ways to expand my horizons and bridge the gap between technical innovation and business success. When I'm not immersed in code, analytics, or developing business cases, you'll probably find me on a fitness adventure or exploring new destinations. This portfolio is a glimpse into my world—where curiosity meets innovation, and technical expertise meets business strategy!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="education-item">
+                <h4>Master of Science in Data Science</h4>
+                <p>University at Buffalo, Buffalo, NY, USA (January 2024 – May 2025)</p>
+                <p>GPA: 3.6/4.0</p>
+                <ul>
+                    <li><strong>Coursework:</strong> Business Analytics, Statistical Analysis, Machine Learning, Financial Modeling, Healthcare Analytics, Database Management, Cloud Computing, Data Visualization, Advanced Python Programming</li>
+                </ul>
+            </div>
+            <div class="education-item">
+                <h4>Bachelor of Technology in Mechanical Engineering</h4>
+                <p>Jawaharlal Nehru Technological University, Anantapur, Andhra Pradesh, India (2018-2022)</p>
+                <p>GPA: 3.8/4.0</p>
+                <ul>
+                    <li><strong>Coursework:</strong> Systems Analysis, Manufacturing Processes, Automation Technologies, Mathematical Modeling, Design Optimization, Quality Control, Engineering Project Management</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience</h2>
+            </div>
+            <div class="experience-item">
+                <h4>Business Development Analyst</h4>
+                <p>Cognizant Technology Solutions Corporation</p>
+                <p>Hyderabad, Telangana (March 2022 – December 2023)</p>
+                <ul>
+                    <li>Developed comprehensive business cases for 15+ technology solutions, conducting detailed cost-benefit analyses that resulted in $5M+ in approved project investments</li>
+                    <li>Researched and analyzed market opportunities for emerging technology solutions, identifying market gaps and competitive positioning strategies</li>
+                    <li>Created compelling presentations and proposals for C-level executives, translating complex technical capabilities into clear business value propositions</li>
+                    <li>Collaborated with engineering teams to assess technical feasibility and align product development with market demands and customer requirements</li>
+                    <li>Worked directly with 20+ clients to understand operational challenges and requirements, ensuring delivered solutions exceeded customer expectations</li>
+                    <li>Conducted on-site assessments of customer operations and processes, identifying automation opportunities and quantifying potential benefits</li>
+                    <li>Developed customized pricing strategies based on customer value analysis and competitive landscape research</li>
+                    <li>Built strong relationships with customer personnel from operations to engineering management, facilitating smooth project execution and follow-up sales</li>
+                    <li>Performed sophisticated financial modeling and ROI analysis for technology investments, supporting strategic decision-making across multiple business units</li>
+                    <li>Developed and maintained budgets for business development operations including customer visits, trade show participation, and marketing initiatives</li>
+                    <li>Created tracking systems for equipment deployment, warranties, and customer satisfaction metrics, providing data-driven insights for business optimization</li>
+                    <li>Supported post-launch tactical objectives development, establishing KPIs and success metrics for new product introductions</li>
+                    <li>Partnered with engineering teams to translate customer requirements into technical specifications and development priorities</li>
+                    <li>Created marketing materials, technical documentation, and customer communications supporting sales and customer success initiatives</li>
+                    <li>Maintained organized workflows across multiple concurrent projects, ensuring deadlines were met and stakeholder expectations managed effectively</li>
+                    <li>Provided analytical support for product development decisions, using data insights to guide feature prioritization and market positioning</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <span class="skill-item">Python</span>
+                <span class="skill-item">R</span>
+                <span class="skill-item">SQL (Advanced)</span>
+                <span class="skill-item">Tableau</span>
+                <span class="skill-item">Power BI</span>
+                <span class="skill-item">Microsoft Excel (Advanced)</span>
+                <span class="skill-item">AWS (S3, EC2, Glue, Redshift, Lambda)</span>
+                <span class="skill-item">Azure Databricks</span>
+                <span class="skill-item">Apache Spark</span>
+                <span class="skill-item">Machine Learning (Supervised & Unsupervised)</span>
+                <span class="skill-item">Kafka</span>
+                <span class="skill-item">Airflow</span>
+                <span class="skill-item">dbt</span>
+                <span class="skill-item">Business Case Development</span>
+                <span class="skill-item">Market Research & Analysis</span>
+                <span class="skill-item">Financial Modeling</span>
+                <span class="skill-item">Cost-Benefit Analysis</span>
+                <span class="skill-item">Data Storytelling</span>
+                <span class="skill-item">Stakeholder Communication</span>
+                <span class="skill-item">Cross-functional Collaboration</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <div class="section-title">
+                <h2>Certifications</h2>
+            </div>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <h4>Databricks Apache Spark Developer Associate</h4>
+                    <p>Databricks, June 2025</p>
+                    <a href="https://credentials.databricks.com/b53cf809-b0a6-42b3-9c20-2177116eeac4#acc.ikg80LN5" class="certification-link">View Badge</a>
+                </div>
+                <div class="certification-card">
+                    <h4>AWS Certified Solutions Architect Associate</h4>
+                    <p>Amazon Web Services (AWS), May 2025</p>
+                    <a href="https://www.credly.com/badges/76e9c6b1-1547-4276-a370-a4e4439b0876/public_url" class="certification-link">View Badge</a>
+                </div>
+                <div class="certification-card">
+                    <h4>AWS Certified Cloud Practitioner</h4>
+                    <p>Amazon Web Services (AWS), Feb 2025</p>
+                    <a href="https://www.credly.com/badges/c11d87b2-9229-4622-a9c6-295a72ee7dc8/public_url" class="certification-link">View Badge</a>
+                </div>
+                <div class="certification-card">
+                    <h4>Google Data Analytics Professional Certificate</h4>
+                    <p>Coursera, Oct 2024</p>
+                    <a href="https://www.coursera.org/account/accomplishments/professional-cert/F5VAK6XTEPPY?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=prof" class="certification-link">View Certificate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>716-275-5673</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <a href="mailto:tejaswinichowdamnallagondappa@gmail.com">tejaswinichowdamnallagondappa@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>Buffalo, NY (Open to Rockville, MD)</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/cntejaswini/" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/cntejaswini" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 Tejaswini Chowdam Nallagondappa Gari.</p>
+                <div class="footer-links">
+                    <a href="#business-projects">Business Projects</a>
+                    <a href="#projects">Technical Projects</a>
+                    <a href="#about">About</a>
+                    <a href="#certifications">Certifications</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <a href="#" class="back-to-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 19V5M5 12l7-7 7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("2qPbh_PHCYZKPIevK");
+        })();
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.sendForm('service_tno74pe', 'template_7xe85i2', this)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Message Sent Successfully!');
+                    document.getElementById('contactForm').reset();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Message Failed to Send: ' + JSON.stringify(error));
+                });
+        });
+
+        function scrollProjects(direction) {
+            const grid = document.getElementById('projectsGrid');
+            const scrollAmount = 340;
+            if (direction === 'left') {
+                grid.scrollLeft -= scrollAmount;
+            } else {
+                grid.scrollLeft += scrollAmount;
+            }
+        }
+
+        // Theme toggle functionality
+        const toggleSwitch = document.querySelector('#theme-toggle-checkbox');
+        const body = document.body;
+
+        toggleSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.add('dark-theme');
+            } else {
+                body.classList.remove('dark-theme');
+            }
+        });
+
+        // Check initial state
+        if (toggleSwitch.checked) {
+            body.classList.add('dark-theme');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.project-card, .business-project-card, .certification-card');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
